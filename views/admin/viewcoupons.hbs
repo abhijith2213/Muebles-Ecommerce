@@ -1,0 +1,53 @@
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-template="vertical-menu-template-free">
+
+
+<div class="layout-page m-3">
+   <div class="table-top" style="margin-top: 30px;
+    width: -webkit-fill-available;">
+<div class="table-responsive">
+    <table class="table table-hover  table-bordered  rounded p-2 align-middle" id="datatable">
+     <thead class="">
+    <tr>
+      <th scope="col">Coupon ID</th>
+      <th scope="col"> Coupon Name</th>
+      
+      <th scope="col">Offer</th>
+      <th scope="col">MinAmount</th>
+      <th scope="col">MaxAmount</th>
+      <th scope="col">Status</th>
+      <th scope="col">Expiry Date</th>
+      <th scope="col">Action</th>
+     
+     
+    </tr>
+  </thead>
+  
+    <tbody class="text-center">
+       {{#each coupons}}
+    <tr>
+      <td>{{this.couponId}}</td>
+      <td>{{this.couponName}}</td>
+      <td>{{this.offer}}</td>
+      <td>{{this.minAmount}}</td>
+      <td>{{this.maxAmount}}</td>
+      <td>{{this.status}}</td>
+      <td>{{this.endDate}}</td>
+      <td>
+      <a class="btn btn-info btn-sm mt-2"  href="/admin/coupons/update/{{this._id}}" role="button" >
+      <i class="bi bi-pencil-square"></i></i>Edit</a>
+      </td>    
+    </tr>
+    {{/each}}
+   
+
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</html>

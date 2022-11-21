@@ -1,0 +1,110 @@
+
+  <!-- preloader  -->
+        <div id="preloader">
+            <div id="ctn-preloader" class="ctn-preloader">
+                <div class="animation-preloader">
+                    <div class="spinner"></div>
+                </div>
+                <div class="loader">
+                    <div class="row">
+                        <div class="col-3 loader-section section-left">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-left">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-right">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-right">
+                            <div class="bg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- preloader end -->
+        
+		<!-- Scroll-top -->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fas fa-angle-up"></i>
+        </button>
+        <!-- Scroll-top-end-->
+
+ 
+
+        <!-- main-area -->
+        <main>
+
+            <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg " data-background="/img/bg/Smallbanner-1.png" style="margin-top: 60px;">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2>Wishlist Page</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+
+            <!-- cart-area -->
+            <div class="cart-area pt-100 pb-100">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-12">
+                            {{#if products}}
+                            <div class="cart-wrapper">
+                                <div class="table-responsive" id="myDiv">
+                                    <table class="table mb-0">
+                                        
+                                        <tbody>
+                                            
+                                            {{#each products}}
+                                            <tr>
+                                                <td class="product-delete"><a class="btn" style="box-shadow: none;" onclick="removeFromWishlist('{{this._id}}','{{this.product._id}}')"><i class="flaticon-trash"></i></a></td>
+                                                <td class="product-thumbnail"><a href="/product-details/{{this.product._id}}"><img src="imageUploads/{{this.product.images.[0]}}" alt=""></a></td>
+                                                <td class="product-name">
+                                                    <h4><a href="">{{this.product.Product}}</a></h4>
+                                                </td>
+                                                <td class="product-price">₹{{this.product.price}}</td>
+                                                <td>
+                                                    <button type="submit" onclick="addToCart('{{this.product._id}}')" class="buttn mt-3 btn-dark" >Add To Cart</button>
+                                                    
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                        
+                                    </table>
+                                </div> 
+                            
+                            </div>
+                           {{else}}
+                           <div class="text-center">
+                            <img src="/images/wishlist.png" style="width: 300px;" class="img-fluid" alt="">
+                            <h2>YOUR WISHLIST IS EMPTY</h2>
+                            <p>Explore more and shortlist your favorite</p>
+                            <a class="btn btn-success text-white mb-4" href="/all-products" type="submit" style="border-radius: 10px; background-color: green;"  role="button" >Continue Shopping</a>
+
+
+                           </div>
+                           {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- cart-area-end -->
+
+        </main>
+        <!-- main-area-end -->
+
+        

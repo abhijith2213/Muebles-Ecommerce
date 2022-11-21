@@ -1,0 +1,50 @@
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-template="vertical-menu-template-free"
+>
+
+
+<div class="layout-page m-3">
+   <div class="table-top" style="margin-top: 30px;
+    width: -webkit-fill-available;">
+<div class="table-responsive">
+<table class="table table-hover  table-bordered  rounded p-2 align-middle" id="datatable">
+     <thead class="">
+    <tr>
+      {{!-- <th scope="col">index</th> --}}
+      <th scope="col">Banner Name</th>    
+      <th scope="col">Banner Description</th>
+      <th scope="col">banner image</th>
+      <th scope="col">Action</th>
+  
+    </tr>
+  </thead>
+  
+    <tbody class="text-center">
+       {{#each datas}}
+    <tr>
+      
+      
+      <td>{{this.bannerName}}</td>
+      <td>
+        <p>{{this.smallHeader}}</p>
+        <p>{{this.bigHeader}}</p>
+        </td>
+      <td><img src="/imageUploads/{{this.image}}" style="width: 100px;" alt=""></td> 
+      <td >     
+         <a class="btn btn-info btn-sm mt-2"  href="/admin/edit-banner/{{this._id}}" role="button" >
+        <i class="bi bi-pencil-square"></i></i>EDIT</a>
+      </td>    
+    </tr>
+    {{/each}}
+   
+
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</html>

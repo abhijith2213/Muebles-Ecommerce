@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="/stylesheets/userProfile.css" />
+
+      <div class="col-md-8" >
+        <div class="card mb-3">
+          <div class="card-body p-5 " id="details" >
+            <div class="row">
+                <p class="welcome-p"  id="greetings"></p> <span class="welcome-name mb-4">{{user.name}}!!</span>
+              <h3 class="pb-3">Details</h3>
+              <div class="col-sm-3">
+                <h6 class="mb-0 p-2">Full Name</h6>
+              </div>
+              <div class="col-sm-9 text-secondary p-2">
+                {{user.name}}
+              </div>
+
+            </div>
+           
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 p-2">Email</h6>
+              </div>
+              <div class="col-sm-9 text-secondary p-2">
+                {{user.email}}
+              </div>
+            </div>
+          
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 p-2">Phone</h6>
+              </div>
+              <div class="col-sm-9 text-secondary p-2">
+                {{user.phone}}
+              </div>
+            </div>
+
+             <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 p-2">Referral</h6>
+              </div>
+              <div class="col-sm-9 text-secondary p-2">
+                {{user.referral}}
+                <span hidden id="referalCode">http://muebles.tk/user_signup/{{user.referral}}</span>
+                 <a class="text-dark" id="referBtn"><i class="bi bi-share ml-2"></i></a>
+                
+              </div>
+            </div>
+            
+           
+            <hr />
+            <div class="row">
+              <div class="col-sm-12">
+                <a
+                  class="btn btn-info"
+                  href="/user_logout"
+                >Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<script>
+    var myDate = new Date();
+var hrs = myDate.getHours();
+
+var greet;
+
+if (hrs < 12)
+  greet = 'Good Morning';
+else if (hrs >= 12 && hrs <= 17)
+  greet = 'Good Afternoon';
+else if (hrs >= 17 && hrs <= 24)
+  greet = 'Good Evening';
+
+document.getElementById('greetings').innerHTML ='<b>' + greet + '</b>';
+</script>
+
+<script>
+   let referalBtn = document.getElementById('referBtn')
+   let referalCode = document.getElementById('referalCode')
+
+   referalBtn.onclick = function(){
+    navigator.clipboard.writeText(referalCode.innerHTML)
+  alertify.set('notifier','position', 'top-center');
+  alertify.success('Referal link copied to clipbaord! ');
+   }
+    
+</script>

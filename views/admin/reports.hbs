@@ -1,0 +1,162 @@
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-template="vertical-menu-template-free">
+
+
+{{!-- Daily REPORT  --}}
+
+    {{#if daily}}
+
+<div class="layout-page m-3">
+   <div class="table-top" style="margin-top: 30px;
+    width: -webkit-fill-available;">
+    <div class="text-center">
+
+    <h2 >Daily Report</h2>
+    <p>{{daily.[0].date}}</p><hr>
+    </div>
+      <table class="table table-hover  borderless rounded p-2" id="datatable">
+     <thead class="">
+    <tr>
+      <th scope="col">Product ID</th>
+      <th scope="col"> Product</th>     
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Payment Method</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  
+    <tbody class="">
+   {{#each daily}}    
+    <tr>
+      
+      <td>{{this._id}}</td>
+      <td>{{this.name}}</td>
+      <td >{{this.price}}</td>
+      <td>{{this.quantity}}</td>
+      <td>{{this.paymentMethod}}</td>    
+      <td>{{this.totalAmount}}</td>    
+        </tr>
+    {{/each}}
+    <tr>
+  <td>
+                                                    
+  <p style="color:#00ff73"><i>Total Orders</i>
+  </td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td ></td>
+  <td style=" color: rgb(234, 0, 0);"><i>Total
+      Sales:</i><strong>{{sumTotal}}</strong> </td>
+  </tr>
+  </tbody>
+</table>
+    {{!-- <h4 style="float: right; margin-right: 60px; margin-top: 20px;">TOTAL <span class="pl-4" >{{sumTotal}}</span></h4> --}}
+</div>
+</div>
+    {{else if monthly}}
+
+    <div class="layout-page m-3">
+   <div class="table-top" style="margin-top: 30px;
+    width: -webkit-fill-available;">
+    <div class="text-center">
+    <h2 >Monthly Report</h2>
+    <p>date</p><hr>
+    </div>
+    <table id="datatable" class="table table-hover    rounded p-2 " >
+     <thead class="text-center">
+    <tr>
+      <th scope="col" style="text-align: center;">Date</th>
+      <th scope="col" style="text-align: center;">No,of Sales</th>
+      <th scope="col" style="text-align: center;"> Total Amount</th>     
+         
+    </tr>
+  </thead>  
+    <tbody class="text-center">
+   {{#each monthly}}    
+    <tr>     
+      <td>{{this._id}}</td>
+      <td>{{this.count}}</td>
+      <td >{{this.totalAmount}}</td>     
+      </tr>
+    {{/each}}
+    <tr>
+  <td>
+                                                    
+  <p style="color:#00ff73"><i>Total Orders:</i>
+
+  <td style="text-align:center ; color: rgb(234, 0, 0);">
+  <i>Total-Quantity:</i><strong>{{totalCount}}</td>
+  <td style="text-align:center ; color: rgb(234, 0, 0);"><i>Total
+      Sales:</i><strong>{{Total}}</strong> </td>
+
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+{{else }}
+
+ <div class="layout-page m-3">
+   <div class="table-top" style="margin-top: 30px;
+    width: -webkit-fill-available;">
+    <div class="text-center">
+    <h2 >Yearly Report</h2>
+    <p>date</p><hr>
+    </div>
+<table id="datatable" class="table table-hover borderless  rounded p-2 " >
+     <thead class="">
+    <tr>
+      <th scope="col" style="text-align: center;">Date</th>
+      <th scope="col" style="text-align: center;">No,of Sales</th>
+      <th scope="col" style="text-align: center;"> Total Amount</th>     
+         
+    </tr>
+  </thead>  
+    <tbody class="text-center">
+   {{#each yearly}}    
+    <tr>     
+      <td>{{this._id}}</td>
+      <td>{{this.count}}</td>
+      <td >{{this.totalAmount}}</td>     
+      </tr>
+    {{/each}}
+        <tr>
+  <td>
+                                                    
+    <p style="color:#00ff73"><i>Total Orders:</i>
+
+    <td style="text-align:center ; color: rgb(234, 0, 0);">
+    <i>Total no.of Sales:</i><strong>{{totalSale}}</td>
+    <td style="text-align:center ; color: rgb(234, 0, 0);"><i>Total Sale Amount:</i><strong>{{yearAmount}}</strong> </td>
+
+    </tr>
+  </tbody>
+</table>
+  {{!-- <p style="float: right;margin: 0;">Total no.of Sales:<span class="m-2">{{totalSale}}</span></p><br>
+  <p style="float: right;">Total Sale Amount:<span class="m-2">{{yearAmount}}</span></p> --}}
+</div>
+</div>
+
+
+<div>
+</div>
+
+{{/if}}
+
+ 
+<style>
+  .borderless td, .borderless th {
+    border: none;
+}
+</style>
+
+   
+    
+</html>

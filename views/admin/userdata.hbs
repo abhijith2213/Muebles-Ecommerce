@@ -1,0 +1,51 @@
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-template="vertical-menu-template-free"
+>
+<div class="layout-page ">
+   <div class="table-top" style="margin-top: 30px; padding-top: 10px; 
+    width: -webkit-fill-available;">
+<div class="table-responsive">
+<table class="table table-hover table-primary table-bordered pt-2" id="datatable">
+     <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  
+    <tbody>
+        {{#each userData}}
+    <tr>
+      <th scope="row">{{inc @index}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.phone}}</td>
+      
+      <td>
+        {{#if this.state}}
+        <a class="btn btn-danger btn-sm"  href="/admin/block-user/{{this._id}}" role="button" style="width:100px ;">
+      <i class="bi bi-lock"></i>  Block</a>
+      {{else}}
+      <a class="btn btn-success btn-sm"  href="/admin/unblock-user/{{this._id}}" role="button" style="width:100px ;">
+  <i class="bi bi-unlock"></i>
+  Unblock
+</a>
+{{/if}}
+      </td>
+      
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+
+</div>
+</div>
+</html>

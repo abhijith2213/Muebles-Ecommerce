@@ -1,0 +1,20 @@
+<div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg');">
+			<div class="inner d-flex justify-content-center">
+				<form action="/user_otpSignin" method="post">
+				<img src="/img/logo/logo-crp-2.png" alt="ehrew" class=".img-responsive " style="width: 300px; margin: 0 auto; margin-left: 30px;">
+					<h3>Log In Form</h3>
+					
+					<div class="form-wrapper">
+						<label for="">OTP</label>
+						<input type="number" id="otp" name="otp" class="form-control">
+						
+					</div>
+
+					{{#if otpErr}}
+                    <p class="error text-danger text-center">{{otpErr}}</p>
+                {{/if}}
+					<button type="submit" class="buttn mt-3">Log In</button>
+                   
+				</form>
+			</div>
+		</div>

@@ -1,0 +1,62 @@
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-template="vertical-menu-template-free"
+>
+
+ 
+
+  <div class="layout-page">
+    <div
+      class="table-top d-flex justify-content-center align-items-center"
+      style="margin-top: 30px;min-height: 25rem;
+        width: -webkit-fill-available; background-image: url('/images/bg-registration-form-2.jpg');"
+    >
+
+      <div style="width: 20rem;">
+
+
+ {{!-- form start  --}}
+
+        <form
+          action="/admin/categories/edit-category/{{category._id}}"
+          method="post">
+
+          <!-- categorie name input -->
+          
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Categorie Name</label>
+            <input
+              type="name"
+              name="category"
+              id="form2Example1"
+              value="{{category.category}}"
+              class="form-control"/>
+          </div>
+
+          <!-- image input -->
+          <div class="form-outline mb-2">
+            <label class="form-label" for="form2Example2">Image</label>
+            <input
+              type="file"
+              id="form2Example2"
+              class="form-control"
+              name="image"
+              value="{{category.image}}"
+              onchange="updateList()"
+            />
+          </div>
+          <div class="mb-2 d-flex justify-content-center"><img src="/imageUploads/{{category.image}}" alt="category-image" style="width: 50px;"></div>
+          
+        
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-4">Update
+            Category</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</html>

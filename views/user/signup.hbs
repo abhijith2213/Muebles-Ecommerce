@@ -1,0 +1,46 @@
+
+		<div class="wrapper" style="background-image: url('/images/bg-registration-form-2.jpg');">
+			<div class="inner d-flex justify-content-center">
+				<form action="/signup" method="post">
+				<img src="/img/logo/logo-crp-2.png" alt="ehrew" class=".img-responsive " style="width: 300px; margin: 0 auto; margin-left: 30px;">
+					<h3>Registration Form</h3>
+					{{!-- <div class="form-group"> --}}
+						<div class="form-wrapper">
+							<label for="">Name</label>
+							<input type="text" id="name" name="name" class="form-control" onkeyup="validateName()" required>
+							<span id="nameError" class="text-danger fw-regular"></span>
+						</div>
+                        <div class="form-wrapper">
+						<label for="">Phone</label>
+						<input type="number" id="phone" name="phone" class="form-control" onkeyup="validatePhone()" required>
+						<span id="phoneError" class="text-danger fw-regular"></span>
+					</div>
+					<div class="form-wrapper">
+						<label for="">Email</label>
+						<input type="email" id="email" name="email" class="form-control" onkeyup="validateEmail()" required>
+						<span id="emailError" class="text-danger fw-regular"></span>
+					</div>
+					<div class="form-wrapper">
+						<label for="">Referral</label>
+						<input type="text" id="referral" name="referral" value="{{referal}}" class="form-control">
+					</div>
+					<div class="form-wrapper">
+						<label for="">Password</label>
+						<input type="password" id="password" name="password" class="form-control" onkeyup="validatePassword()" required>
+						<span id="passwordError" class="text-danger fw-regular"></span>
+					</div>
+					<div class="form-wrapper">
+						<label for="">Confirm Password</label>
+						<input type="password" id="cpassword" class="form-control" onkeyup="validateRepass()">
+						<span id="cpasswordError" class="text-danger fw-regular"></span>
+					</div>
+
+					<button type="submit" class="buttn mt-3" onclick="return validateSubmit()">Register Now</button>
+					 <span id="bttn-error" class="text-danger fw-regular text-center"></span>
+					 {{#if signupErr}}
+              			<p class="text-danger ">{{signupErr}}</p>
+             		 {{/if}}
+					 <div class="mt-3">Already have account? <a href="/user_signin" class="adec">Login Now</a></div>
+				</form>
+			</div>
+		</div>

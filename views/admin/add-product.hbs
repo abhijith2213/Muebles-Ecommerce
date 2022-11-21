@@ -1,0 +1,175 @@
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-template="vertical-menu-template-free"
+>
+  <div class="layout-page">
+    <div
+      class="table-top d-flex justify-content-center align-items-center"
+      style="margin-top: 30px;min-height: 25rem; padding-top: 20px;
+        width: -webkit-fill-available; background-image: url('/images/bg-registration-form-2.jpg');"
+    >
+    
+      <div style="width: 20rem;">
+   
+         {{#if Err}}
+          {{!-- <p class="error text-danger text-center">{{resMsg}}</p> --}}
+          <div
+            class="alert alert-warning d-flex align-items-center"
+            role="alert"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="currentColor"
+              class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+              viewBox="0 0 16 16"
+              role="img"
+              aria-label="Warning:">
+              <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+              ></path>
+            </svg>
+
+            <div>
+              {{Err}}
+            </div>
+          </div>
+
+        {{/if}}
+        {{#if Msg}}
+
+          <div
+            class="alert alert-success d-flex align-items-center"
+            role="alert">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-check2-circle"
+              viewBox="0 0 16 16">
+
+              <path
+                d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+              ></path>
+              <path
+                d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
+              ></path>
+            </svg>
+            <div>
+              {{Msg}}
+            </div>
+          </div>
+
+        {{/if}}
+   
+
+        <form
+          action="/admin/products/add-product"
+          method="post"
+          enctype="multipart/form-data">
+          <!-- product name input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Product Name</label>
+            <input
+              type="name"
+              name="Product"
+              id="form2Example1"
+              class="form-control" required/>
+          </div>
+
+           <!-- product category input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Category</label>
+            
+            <select
+              name="category"
+              id="form2Example1"
+              class="form-control"
+              required>
+              <option value="Select"></option>
+             {{#each cat}}
+              <option value="{{this._id}}">{{this.category}}</option>
+              {{/each}}
+              </select>
+          </div>
+
+           <!-- product rate input -->
+          <div class="form-outline mb-4 ">
+            <label class="form-label" for="form2Example1">Price</label>
+            <input
+              type="number"
+              name="price"
+              id="form2Example1"
+              placeholder="₹"
+              class="form-control"/>
+          </div>
+
+            <!-- product stock input -->
+          <div class="form-outline mb-4" >
+            <label class="form-label" for="form2Example1">Product Offer</label>
+            <input placeholder="Offer in percentage..."
+              type="number"
+              name="offerPercentage"
+              id="form2Example1"
+              class="form-control"/>
+          </div>
+
+           <!-- product description input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Product Description</label>
+            <input
+              type="text"
+              name="description"
+              id="form2Example1"
+              class="form-control" required/>
+          </div>
+
+          <!-- image input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">Image</label>
+            <input
+              type="file"
+              id="form2Example2"
+              class="form-control"
+              name="images"
+              onchange="viewImages(event)"
+              multiple="multiple" required/>
+             {{!-- <img src="" alt="category image" class="mt-2 d-flex text-center" style="width: 100px; " id="imgView"> --}}
+
+             <div class="Image-upload mt-2">
+                          <img src="" alt="" style="width: 100px; height:auto" id="imgView" hidden>
+                          <img src="" alt="" style="width: 100px; height:auto" id="imgView1" hidden>
+                          <img src="" alt="" style="width: 100px; height:auto" id="imgView2" hidden>                               
+              </div>
+          </div>
+          
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-4">Add Product</button>
+
+      
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+ {{!-- <script defer src="https://cdn.crop.guide/loader/l.js?c=SDXRMP"></script> --}}
+ <script>
+        function viewImages(event) {
+          console.log(event.target.files,'eventFiles')
+            document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
+            document.getElementById('imgView').hidden = false
+            document.getElementById('imgView1').src = URL.createObjectURL(event.target.files[1])
+            document.getElementById('imgView1').hidden = false
+            document.getElementById('imgView2').src = URL.createObjectURL(event.target.files[2])
+            document.getElementById('imgView2').hidden = false
+            
+        }
+    </script>
+</html>

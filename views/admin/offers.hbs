@@ -1,0 +1,126 @@
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-template="vertical-menu-template-free"
+>
+
+ 
+
+  <div class="layout-page">
+    <div
+      class="table-top d-flex justify-content-center align-items-center"
+      style="margin-top: 30px;min-height: 25rem;
+        width: -webkit-fill-available; background-image: url('/images/bg-registration-form-2.jpg');"
+    >
+
+      <div style="width: 20rem;">
+
+ {{#if msg}}
+
+          <div
+            class="alert alert-success d-flex align-items-center"
+            role="alert">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-check2-circle"
+              viewBox="0 0 16 16">
+              <path
+                d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+              ></path>
+              <path
+                d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
+              ></path>
+            </svg>
+            <div>
+              {{msg}}
+            </div>
+          </div>
+
+        {{/if}}
+ {{!-- form start  --}}
+<h2>Add Category Offer</h2>
+        <form
+          action="/admin/add-newoffers"
+          method="post">
+
+          <!-- categorie name input -->
+          
+           <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Category</label>
+            
+            <select
+              name="category"
+              id="form2Example1"
+              class="form-control">
+              <option value="" selected hidden></option>
+              {{#each categories}}
+              <option value="{{this._id}}">{{this.category}}</option>
+              {{/each}}
+              </select>
+          </div>
+
+           <div class="form-outline mb-4 ">
+            <label class="form-label" for="form2Example1">Offer</label>
+            <input
+              type="number"
+              name="Offer"
+              value=""
+              id="form2Example1"
+              placeholder="In percentage"
+              class="form-control"/>
+          </div>
+          
+        
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-4">Add
+            Offer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+   <div class="layout-page">
+    <div
+      class="table-top d-flex justify-content-center align-items-center"
+      style="margin-top: 30px;min-height: 25rem;
+        width: -webkit-fill-available; background-image: url('/images/bg-registration-form-2.jpg');"
+    >
+
+      <div style="width: 20rem;">
+
+
+ {{!-- form start 
+      <h2>Remove Offer</h2>
+        <form action="" method="post" id="removeCoupon">
+
+          <!-- categorie name input -->
+          
+           <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Category</label>
+            
+            <select
+              name="category"
+              id="form2Example1"
+              class="form-control">
+              <option value="" selected hidden></option>
+              {{#each categories}}
+              <option value="{{this._id}}">{{this.category}}</option>
+              {{/each}}
+              </select>
+          </div>
+                  
+          <!-- Submit button -->
+          <button type="submit" onclick="removeOffer()" class="btn btn-primary btn-block mb-4">Remove
+            Offer</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</html> --}}

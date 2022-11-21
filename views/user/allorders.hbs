@@ -1,0 +1,128 @@
+<!-- preloader  -->
+<div id="preloader">
+  <div id="ctn-preloader" class="ctn-preloader">
+    <div class="animation-preloader">
+      <div class="spinner"></div>
+    </div>
+    <div class="loader">
+      <div class="row">
+        <div class="col-3 loader-section section-left">
+          <div class="bg"></div>
+        </div>
+        <div class="col-3 loader-section section-left">
+          <div class="bg"></div>
+        </div>
+        <div class="col-3 loader-section section-right">
+          <div class="bg"></div>
+        </div>
+        <div class="col-3 loader-section section-right">
+          <div class="bg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- preloader end -->
+
+<!-- Scroll-top -->
+<button class="scroll-top scroll-to-target" data-target="html">
+  <i class="fas fa-angle-up"></i>
+</button>
+<!-- Scroll-top-end-->
+
+<!-- main-area -->
+<main>
+
+  <!-- breadcrumb-area -->
+  <section
+    class="breadcrumb-area breadcrumb-bg"
+    data-background="/img/bg/sofa-light.jpg"
+    style="margin-top: 60px;"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="breadcrumb-content">
+            <h2>Order Page</h2>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Orders</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb-area-end -->
+  {{#if orders}}
+<div class="table-responsive">
+  <table class="table align-middle mb-0 bg-white mt-3 mb-3 align-middle">
+    <thead class="bg-light text-center">
+      <tr>
+       
+        <th>Order_id</th>
+        <th>Ordered To</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Payment Method</th>
+        <th>Order Status</th>
+        <th>View Details</th>
+      </tr>
+    </thead>
+    
+    {{#each orders}}
+    <tbody class="text-center">
+      <tr >
+        
+        <td class="align-middle">  
+          <p class="fw-normal mb-1">{{this._id}}</p>
+        </td>
+         <td class="align-middle">  
+          <p class="fw-normal mb-1">{{this.deliveryDetails.firstName}}</p>
+         
+        </td>
+        <td class="align-middle text-truncate" style="max-width: 122px;">
+             {{this.date}}
+        </td>
+        <td class="align-middle">{{this.totalAmount}}</td>
+         <td class="align-middle">  
+          <p class="fw-normal mb-1">{{this.paymentMethod}}</p>
+          
+        </td>
+
+         <td class="align-middle">
+          {{#if_eq this.orderStatus "Cancelled"}}
+             <span class="badge badge-danger rounded-pill d-inline">{{this.orderStatus}}</span>         
+          {{else}}         
+           {{#if_eq this.orderStatus "Delivered"}}
+           <span class="badge badge-success rounded-pill d-inline">{{this.orderStatus}}</span>
+           {{else}}
+            <span class="badge badge-warning rounded-pill d-inline">{{this.orderStatus}}</span>           
+          {{/if_eq}}
+           {{/if_eq}}
+         
+        </td>
+
+          <td class="align-middle">
+             <span class="badge badge-info rounded-pill d-inline "><a href="/order/{{this._id}}" class="text-white">VIEW</a> </span>   
+        </td>
+      </tr>
+      
+    </tbody>
+    {{/each}}
+  </table>
+</div>
+    {{else}}
+    <div class="text-center">
+
+    <img src="/img/icon/no-results.png" class="img-fluid my-3 mx-auto" style="width: 300px;" alt="">
+    <h2>NO ORDER FOUND</h2>
+    <p>Looks like you haven't made your orders yet</p>
+
+     <a class="btn btn-success text-white mb-4" href="/all-products" type="submit" style="border-radius: 10px; background-color: green;"  role="button" >Continue Shopping</a>
+    </div>
+    {{/if}}
+
+</main>

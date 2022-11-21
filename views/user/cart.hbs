@@ -1,0 +1,152 @@
+
+  <!-- preloader  -->
+        <div id="preloader">
+            <div id="ctn-preloader" class="ctn-preloader">
+                <div class="animation-preloader">
+                    <div class="spinner"></div>
+                </div>
+                <div class="loader">
+                    <div class="row">
+                        <div class="col-3 loader-section section-left">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-left">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-right">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-right">
+                            <div class="bg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- preloader end -->
+
+
+		<!-- Scroll-top -->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fas fa-angle-up"></i>
+        </button>
+        <!-- Scroll-top-end-->
+
+ 
+
+        <!-- main-area -->
+        <main>
+
+            <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg " data-background="/img/bg/Smallbanner-1.png" style="margin-top: 60px;">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2>Cart Page</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+
+            <!-- cart-area -->
+            <div class="cart-area pt-100 pb-100" id="myDiv">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-12">
+                             {{#if products}}
+                            <div class="cart-wrapper">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="product-thumbnail"></th>
+                                                <th class="product-name">Product</th>
+                                                <th class="product-price">Price</th>
+                                                <th class="product-quantity">QUANTITY</th>
+                                                <th class="product-subtotal">SUBTOTAL</th>
+                                                <th class="product-delete"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                            {{#each products}}  
+                                            <tr>
+
+                                                <td class="product-thumbnail"><a href="/product-details/{{this.product._id}}"><img src="imageUploads/{{this.product.images.[0]}}" alt=""></a></td>
+                                                <td class="product-name">
+                                                    <h4><a href="">{{this.product.Product}}</a></h4>
+                                                </td>
+                                                <td class="product-price">₹{{this.product.price}}</td>
+                                                
+                                              
+                                                <td class="p-0">
+                                                    <a  class="btn" style="font-size:25px; padding:0; box-shadow: none; color:#6c757d;" id="val-minus" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)"><i class="bi bi-dash-square"></i></a>
+                                                  
+                                                    <input type="text" style="width:25px ; text-align: center; border: none;" value="{{this.quantity}}" readonly="" id="{{this.product._id}}">
+                                                     <a  class="btn" style="font-size:25px; padding:0; box-shadow: none; color:#6c757d;" id="val-plus" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)"><i class="bi bi-plus-square"></i></a>
+                                                </td>
+                                                
+                                                <td class="product-subtotal" >₹<span id="a{{this.product._id}}">{{this.subTotal}}</span></td>
+                                                
+                                                <td class="product-delete"><a class="btn" style="box-shadow: none;" onclick="removeFromCart('{{this._id}}','{{this.product._id}}')"><i class="flaticon-trash"></i></a></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                        {{/each}}
+                                    </table>
+                                
+                                </div> 
+                               
+                            </div>
+                            <div class="cart-total pt-95">
+                                <h3 class="title">CART TOTALS</h3>
+                                <div class="shop-cart-widget">
+                                    <form action="">
+                                        <ul>
+                                            <li class="sub-total"><span>SUBTOTAL</span><span id="subtotal"> ₹{{total}}</span></li>
+                                            <li>
+                                                <span>SHIPPING</span>
+                                                <div class="shop-check-wrap">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                        <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </li>
+
+                                           
+                                            <li class="cart-total-amount"><span>TOTAL</span> <span class="amount" id="totall">₹{{total}}</span></li>
+                                        </ul>
+                                        <a href="/cart/checkout" class="btn">PROCEED TO CHECKOUT</a>
+                                    </form>
+                                </div>
+                            </div>
+                                {{else}}
+                                    <div class="text-center">
+                                        <img src="/images/basket.png" style="width: 300px;" class="img-fluid my-2" alt="">
+                                        <h2>YOUR CART IS EMPTY</h2>
+                                        <p class="mb-4">Looks like you haven't added anything to your cart yet </p>
+                                        <a class="btn btn-success text-white mb-4" href="/viewProducts?page=1&&lim=9" type="submit" style="border-radius: 10px; background-color: green;"  role="button" >Continue Shopping</a>
+
+                                    </div>
+                                    {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- cart-area-end -->
+
+        </main>
+        <!-- main-area-end -->
+
+        

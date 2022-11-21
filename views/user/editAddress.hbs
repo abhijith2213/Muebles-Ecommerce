@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="/stylesheets/userProfile.css" />
+  
+                        <div class="col-lg-7" style=" margin-left: 40px;">
+                            <div class="checkout-wrap p-5 card">
+                                <div class="checkout-top">
+                                    <h5 class="title">Edit Billing details</h5>
+                                   
+                                </div>
+                                <form  class="checkout-form" id="address-form" style="width: 100%;" action="/viewAddress/edit/{{address._id}}" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label for="fName">FIRST NAME <span>*</span></label>
+                                                <input type="text" id="fName" name="firstName" value="{{address.address.firstName}}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label for="lName">LAST NAME <span>*</span></label>
+                                                <input type="text" id="lName" name="lastName" value="{{address.address.lastName}}" required>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="col-12">
+                                            <div class="form-grp">
+                                                <label for="address">STREET ADDRESS <span>*</span></label>
+                                                <input type="text" id="address" name="street-address" value="{{address.address.street-address}}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label>TOWN / CITY <span>*</span></label>
+                                                <select class="custom-select" name="city"  required>
+                                                    <option value="{{address.address.city}}" selected hidden>{{address.address.city}}</option>
+                                                    <option value="Aluva">Aluva</option>
+                                                    <option value="Angamaly">Angamaly</option>
+                                                    <option value="Edapally">Edapally</option>
+                                                    <option value="Kochi">Kochi</option>
+                                                    <option value="Thrissur">Thrissur</option>
+                                                    <option value="Palakkad">Palakkad</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label>STATE <span>*</span></label>
+                                                <select class="custom-select" name="state" required>
+                                                    <option value="{{address.address.state}}" selected hidden>{{address.address.state}}</option>
+                                                    <option value="Kerala">Kerala</option>
+                                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                                    <option value="Karnataka">Karnataka</option>
+                                                    <option value="AndhraPradesh">AndhraPradesh</option>
+                                                    <option value="Goa">Goa</option>
+                                                    <option value="Delhi">Delhi</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label for="zip">postal ZIP <span>*</span></label>
+                                                <input type="text" id="zip" name="zip" value="{{address.address.zip}}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label for="phone">Your PHONE <span>*</span></label>
+                                                <input type="text" id="phone" name="phone" value="{{address.address.phone}}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-grp">
+                                                <label for="email">EMAIL ADDRESS <span>*</span></label>
+                                                <input type="email" id="email" name="email" value="{{address.address.email}}" required>
+                                               
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <div class="mr-2">
+                                    <button type="submit" class="btn-success">Update Address</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+             </div>
+
+  </div>
+</div>

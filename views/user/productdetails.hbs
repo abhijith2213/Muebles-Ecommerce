@@ -1,0 +1,249 @@
+{{!-- pre loader --}}
+<div id="preloader">
+    <div id="ctn-preloader" class="ctn-preloader">
+        <div class="animation-preloader">
+            <div class="spinner"></div>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- preloader End --}}
+
+<!-- Scroll-top -->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <i class="fas fa-angle-up"></i>
+</button>
+<!-- Scroll-top-end-->
+
+
+<!-- main-area -->
+<main>
+
+    <!-- breadcrumb-area -->
+    <div class="breadcrumb-area breadcrumb-style-two" data-background="/img/bg/s_breadcrumb_bg01.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 d-none d-lg-block">
+                    <div class="previous-product">
+                        <a href="/all-products"><i class="fas fa-angle-left"></i> All products</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="breadcrumb-content">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/all-products">Shop</a></li>
+                                <li class="breadcrumb-item"><a href="">Product</a></li>
+                              
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-area-end -->
+
+    <!-- shop-details-area -->
+    <section class="shop-details-area pt-100 pb-40">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-7">
+                    <div class="shop-details-flex-wrap">
+                        <div class="shop-details-nav-wrap">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="item-one-tab" data-toggle="tab" href="#item-one" role="tab" aria-controls="item-one" aria-selected="true"><img
+                                            src="/imageUploads/{{product.images.[0]}}" alt="" class="p-small-img"></a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="item-two-tab" data-toggle="tab" href="#item-two" role="tab"
+                                        aria-controls="item-two" aria-selected="false"><img
+                                            src="/imageUploads/{{product.images.[1]}}" alt="" class="p-small-img"></a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="item-three-tab" data-toggle="tab" href="#item-three"
+                                        role="tab" aria-controls="item-three" aria-selected="false"><img
+                                            src="/imageUploads/{{product.images.[2]}}" alt="" class="p-small-img"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="shop-details-img-wrap">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="item-one" role="tabpanel" aria-labelledby="item-one-tab">
+                                    <div class="shop-details-img" >
+                                        <img src="/imageUploads/{{product.images.[0]}}" alt="image" class="p-img">
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="item-two" role="tabpanel" aria-labelledby="item-two-tab">
+                                    <div class="shop-details-img" >
+                                        <img src="/imageUploads/{{product.images.[1]}}" alt="image" class="p-img">
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="item-three" role="tabpanel" aria-labelledby="item-three-tab">
+                                    <div class="shop-details-img" >
+                                        <img src="/imageUploads/{{product.images.[2]}}" alt="image" class="p-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-5">
+                    <div class="shop-details-content">
+                        <a href="" class="product-cat">{{product.category.category}}</a>
+                        <h3 class="title">{{product.Product}}</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="style-name">Style Name : {{product.Product}}</p>
+                        {{#if product.orginalPrice}}
+                        <div class="price">Price : ₹ {{product.price}}</div>
+                        <p class="text-danger ml-5 pl-3"><del>₹{{product.orginalPrice}}</del><span class="text-success ml-4">{{product.offerPercentage}}% off</span></p>
+                        {{else}}
+                        <div class="price">Price : ₹ {{product.price}}</div>
+                        {{/if}}
+                        
+                        <div class="perched-info">
+                           
+                            <a onclick="addToCart('{{product._id}}')" class="btn" >Add to cart</a>
+
+                            <div class="wishlist-compare">
+                                <ul>
+                                    <li style="cursor: pointer;"><a id="wishlistbtn" onclick="addToWishlist('{{product._id}}')"><i class="far fa-heart"></i> Add to Wishlist</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-desc-wrap">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description"
+                                    role="tab" aria-controls="description" aria-selected="true">Description Guide</a>
+                            </li>
+                            {{!-- <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
+                                    aria-controls="reviews" aria-selected="false">Reviews</a>
+                            </li> --}}
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="description" role="tabpanel"
+                                aria-labelledby="description-tab">
+                                <div class="product-desc-title mb-30 ">
+                                    <h4 class="title">Product Discription :</h4>
+                                </div>
+                                <p class="">{{product.description}}</p>
+
+                               
+                                
+                            </div>
+                            {{!-- <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <div class="product-desc-title mb-30">
+                                    <h4 class="title">Reviews (0) :</h4>
+                                </div>
+                                <p>Your email address will not be published. Required fields are marked</p>
+                                <p class="adara-review-title">Be the first to review </p>
+                                <div class="review-rating">
+                                    <span>Your rating *</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <form action="#" class="comment-form review-form">
+                                    <span>Your review *</span>
+                                    <textarea name="message" id="comment-message" placeholder="Your Comment"></textarea>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" placeholder="Your Name*">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" placeholder="Your Email*">
+                                        </div>
+                                    </div>
+                                    <div class="comment-check-box">
+                                        <input type="checkbox" id="comment-check">
+                                        <label for="comment-check">Save my name and email in this browser for the next
+                                            time I comment.</label>
+                                    </div>
+                                    <button class="btn">Submit</button>
+                                </form>
+                            </div> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="related-product-wrap">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="related-product-title">
+                            <h4 class="title">You May Also Like...</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row related-product-active">
+                    {{#each catProducts}}
+                    <div class="col-xl-3">
+                        <div class="new-arrival-item text-center">
+                            <div class="thumb mb-25">
+                                {{#if this.offerPercentage}}
+                                    <div class="discount-tag new">- {{this.offerPercentage}}%</div>
+                                {{/if}}
+                                <a href="/product-details/{{this._id}}"><img src="/imageUploads/{{this.images.[0]}}" alt="{{this.Product}}"  style="height:344px ; width:296px ;"></a>
+                                <div class="product-overlay-action">
+                                    <ul>
+                                        <li><a style="color: white;" onclick="addToWishlist('{{product._id}}')"><i class="far fa-heart"></i></a></li>
+                                        <li><a href="/product-details/{{this._id}}"><i class="far fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h5><a href="/product-details/{{this._id}}">{{this.Product}}</a></h5>
+                                  {{#if this.orginalPrice}}
+                                            <span class="price">₹{{this.price}}</span>
+                                            <span class="price text-danger"><del>₹{{this.orginalPrice}}</del></span>
+                                    {{else}}
+                                            <span class="price">₹{{this.price}}</span>
+                                    {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- shop-details-area-end -->

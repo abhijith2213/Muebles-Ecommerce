@@ -1,0 +1,159 @@
+ <!-- preloader  -->
+        <div id="preloader">
+            <div id="ctn-preloader" class="ctn-preloader">
+                <div class="animation-preloader">
+                    <div class="spinner"></div>
+                </div>
+                <div class="loader">
+                    <div class="row">
+                        <div class="col-3 loader-section section-left">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-left">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-right">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-right">
+                            <div class="bg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- preloader end -->
+
+
+      
+        <main>
+
+             <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg " data-background="/img/bg/sofa-light.jpg" style="margin-top: 60px;">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2>Order Page</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+
+
+
+
+<section class=" gradient-custom">
+  <div class="container my-2 " id="myDiv">
+    <div class="row d-flex justify-content-center align-items-center ">
+      <div class="col-lg-10 col-xl-8">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-header px-4 ">
+            <h5 class="text-muted mb-0">Thanks for your Order, <span style="color: #a8729a;">{{user.name}}</span>!</h5>
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
+              <p class="small text-muted mb-0">Receipt Voucher : {{order._id}}</p>
+            </div>
+            <div class="card shadow-0 border mb-4">
+              <div class="card-body">
+             {{#each orderItem}}
+                <div class="row justify-content-between">
+                  <div class="col-md-2">
+                    <img src="/imageUploads/{{this.product.images.[0]}}"
+                      class="img-fluid" alt="product">
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0">{{this.product.Product}}</p>
+                  </div>
+                 
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">Qty: {{this.quantity}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">₹ {{this.product.price}}</p>
+                  </div>
+                </div>
+            {{/each}}
+               
+
+              </div>
+            </div>
+            
+            <p class="fw-bold mb-0">Order Details</p>
+
+            <div class="d-flex justify-content-between pt-2">
+              
+                   <div>
+                        <p>Deliver To</p>
+                        <p class="m-0">{{order.deliveryDetails.streetAddress}}</p>
+                        <span class="m-0">{{order.deliveryDetails.city}}</span>,<span class="m-0">{{order.deliveryDetails.state}}</span>
+                        <p>{{order.deliveryDetails.zip}}</p>
+                   </div> 
+                  
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Payment Method</span><br>{{order.paymentMethod}}</p>
+
+            </div>
+        {{#if order.coupon}}
+            <div class="d-flex justify-content-between pt-2">
+              <p></p>
+              <p ><span class="fw-bold me-4">Discount</span><br>
+              <span class="text-danger">coupon applied {{order.coupon.offer}}%</span><br>
+              {{#if order.walletDiscount}}
+              <span class="text-danger">wallet Discount -{{order.walletDiscount}}</span>
+              {{/if}}
+              </p>
+            </div>
+        {{/if}}
+            <div class="d-flex justify-content-between">
+              <p class="text-muted mb-0">Invoice Date : {{order.date}}</p>
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> ₹{{order.totalAmount}}</p>        
+             
+            </div>
+
+            <div class="d-flex justify-content-between ">            
+             
+              {{#if_eq order.orderStatus "Cancelled"}}
+                        <p class="text-danger">Order Cancelled</p>
+                    {{else}}
+                        {{#if_eq order.orderStatus "Delivered"}}
+                            {{#if_eq order.return "expired"}}
+                                <p></p>
+                            {{else}}
+                                <div class="mr-2 mt-2 ">
+                                <a class="btn btn-primary text-white" style="background-color:#dd4b39; border-radius: 10px;" onclick="returnOrder('{{order._id}}','{{order.totalAmount}}','{{order.date}}')" role="button">RETURN ORDER</a>
+                              <button class=" text-white" style="background-color: #dd4b39; border-radius: 10px; border: none; padding: 3px;" onclick="returnOrder('{{order._id}}','{{order.totalAmount}}','{{order.date}}')" role="button" >RETURN ORDER</button>
+
+                                </div> 
+                            {{/if_eq}}              
+                        {{else}}
+
+                        {{#if_eq order.orderStatus "Returned"}}
+                        <p class="text-warning mt-2 fw-bold">Product Returned</p>
+                        {{else}}
+                            <div class="mr-2 mt-2 ">
+                              <button class=" text-white" style="background-color: #dd4b39; border-radius: 10px; border: none; padding: 3px;" onclick="cancelOrder('{{order._id}}')" role="button" id="cancelBtn">CANCEL ORDER</button>
+                            </div>
+                        {{/if_eq}}
+                
+                        {{/if_eq}}
+                    {{/if_eq}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+           

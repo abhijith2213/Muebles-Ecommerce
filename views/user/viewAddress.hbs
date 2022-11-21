@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="/stylesheets/userProfile.css" />
+
+      <div class="col-md-8" >
+        <div class="card mb-3">
+          <div class="card-body p-5 "  >
+            
+            <div class="row" id="myDiv">
+                
+              <h3 class="pb-3">Saved Addresses</h3>
+              
+                            
+                          {{#each savedAddress}}
+                        <div class="accordion mb-3" id="accordionExample">
+                           
+                                    <div class="bg-transparent">
+                                        <div class="card-header bg-transparent" id="headingOne">
+                                            <h2 class="mb-0 bg-transparent">
+                                                <button class="btn btn-link btn-block text-left text-dark text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseOne{{this._id}}" aria-expanded="false" aria-controls="collapseOne">
+                                                 <i class="bi bi-trash" onclick="deleteAddress('{{this._id}}')"></i>   {{this.address.firstName}} {{this.address.lastName}} <i class="bi bi-plus-circle" style="float: right; font-size: x-large;"></i>
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    <div id="collapseOne{{this._id}}" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                            <p>{{this.address.street-address}}, {{this.address.city}}</p>
+                                            <p>{{this.address.state}}, {{this.address.zip}}</p>
+                                            <p>{{this.address.email}}</p>
+                                            <p>{{this.address.phone}}</p>
+
+                                            <div class="row" style="float: right;">
+                                            <div class="col-sm-12">
+                                                <a class="btn btn-info" href="/viewAddress/edit/{{this._id}}">Edit Address</a>
+                                            </div>
+                                            </div>
+                                
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                        </div>
+                        {{/each}}
+
+                                   
+
+            </div>
+
+            
+           
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

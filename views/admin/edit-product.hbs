@@ -1,0 +1,121 @@
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-template="vertical-menu-template-free"
+>
+  <div class="layout-page">
+    <div
+      class="table-top d-flex justify-content-center align-items-center"
+      style="margin-top: 30px;min-height: 25rem; padding-top: 20px;
+        width: -webkit-fill-available; background-image: url('/images/bg-registration-form-2.jpg');"
+    >
+
+      <div style="width: 20rem;">
+        
+
+        <form
+          action="/admin/products/edit-product/{{productss._id}}"
+          method="post"
+          enctype="multipart/form-data">
+          <!-- product name input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Product Name</label>
+            <input
+              type="name"
+              name="Product"
+              value="{{productss.Product}}"
+              id="form2Example1"
+              class="form-control"/>
+          </div>
+
+           <!-- product category input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Category</label>
+            
+            <select
+              name="category"
+              id="form2Example1"
+              class="form-control">
+              <option hidden selected value="{{productss.category._id}}">{{productss.category.category}}</option>
+              {{#each category}}
+              <option value="{{this._id}}">{{this.category}}</option>
+              {{/each}}
+              </select>
+          </div>
+
+           <!-- product rate input -->
+          <div class="form-outline mb-4 ">
+            <label class="form-label" for="form2Example1">Price</label>
+            <input
+              type="number"
+              name="price"
+              value="{{productss.price}}"
+              id="form2Example1"
+              placeholder="₹"
+              class="form-control"/>
+          </div>
+
+            <!-- product offer input -->
+          <div class="form-outline mb-4" >
+            <label class="form-label" for="form2Example1">Product Offer</label>
+            <input placeholder="Offer in percentage..."
+              type="number"
+              value="{{productss.offerPercentage}}"
+              name="offerPercentage"
+              id="form2Example1"
+              class="form-control"/>
+          </div>
+
+
+          <div class="form-outline mb-4">
+            <input 
+              type="number"
+              value="{{productss.orginalPrice}}"
+              name="orginalPrice"
+              id="form2Example1"
+              class="form-control"/>
+              
+          </div>
+
+           <!-- product description input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Product Description</label>
+            <textarea type="text-area"
+              name="description"
+              id="form2Example1"
+              class="form-control">{{productss.description}}</textarea>
+              
+          </div>
+
+          <!-- image input -->
+          <div class="form-outline mb-4 ">
+            <label class="form-label" for="form2Example2">Image</label>
+            <input
+              type="file"
+              id="form2Example2"
+              class="form-control"
+              name="images"
+              value="{{productss.images}}"
+              multiple="multiple"/>
+              <div class="d-flex justify-content-between">
+
+             <img src="/imageUploads/{{productss.images.[0]}}" alt="category images" class="mt-2 d-flex text-center" style="width: 100px; " id="imgView">
+             <img src="/imageUploads/{{productss.images.[1]}}" alt="category images" class="mt-2 d-flex text-center" style="width: 100px; " id="imgView">
+             <img src="/imageUploads/{{productss.images.[2]}}" alt="category images" class="mt-2 d-flex text-center" style="width: 100px; " id="imgView">
+              </div>
+          </div>
+          
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-4">Update
+            Product</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+ 
+</html>

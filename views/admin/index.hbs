@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-template="vertical-menu-template-free"
+>
+  
+<link rel="stylesheet" href="/stylesheets/admincards.css">
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+       
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+              
+{{!-- Statics  --}}
+
+  
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20 text-white">Orders Received</h6>
+                    <h2 class=" text-white" style="text-align: right;"><i class="fa fa-cart-plus f-left"></i><span>{{ordersData.count}}</span></h2>
+                   <p class="m-b-0">Amount of<span class="f-right">{{ordersData.amount}}</span></p>
+                </div>
+            </div>
+        </div>
+        {{#each totalOrders}}
+        {{#if_eq this._id "Delivered"}}
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20 text-white">Orders Completed</h6>
+                    <h2 class="text-white" style="text-align: right;"><i class="fa fa-rocket f-left"></i><span>{{this.count}}</span></h2>  
+                    <p class="m-b-0">Amount of<span class="f-right">{{this.totalAmount}}</span></p>     
+                </div>
+            </div> 
+        </div>
+        {{else}}
+            {{#if_eq this._id "Cancelled"}}
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-pink order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20 text-white">Orders Cancelled</h6>
+                    <h2 class="text-white" style="text-align: right;"><i class="fa fa-credit-card f-left"></i><span>{{this.count}}</span></h2>
+                    <p class="m-b-0">Amount of<span class="f-right">{{this.totalAmount}}</span></p>
+                </div>
+            </div>
+        </div>
+        {{else}}
+          <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20 text-white">Orders {{this._id}}</h6>
+                    <h2 class=" text-white" style="text-align: right;"><i class="fa fa-refresh f-left"></i><span>{{this.count}}</span></h2>
+                   <p class="m-b-0">Amount of<span class="f-right">{{this.totalAmount}}</span></p>
+                </div>
+            </div>
+        </div>
+        {{/if_eq}}
+        {{/if_eq}}
+        
+       
+        {{/each}}
+	</div>
+</div>
+
+{{!-- end  --}}
+ 
+
+    
+              <div class="col-lg-8 mb-4 order-0">
+                  <div class="card">
+                    <div class="d-flex align-items-end row" >                   
+                       
+                          <canvas id="categoryChart" width="200" height="150"></canvas>
+                      
+                    </div>
+                  </div>
+                </div>
+
+
+            <!-- Order Statistics -->
+                <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4" style="height: max-content;">
+                  <div class="card h-100">
+                    <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                      <div class="card-title mb-0">
+                        <h5 class="m-0 me-2">Order Statistics</h5>
+                        
+                      </div>
+                      <div class="dropdown">
+                        <button
+                          class="btn p-0"
+                          type="button"
+                          id="orederStatistics"
+                          data-bs-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
+                          {{!-- <a class="dropdown-item" href="javascript:void(0);">Select All</a>
+                          <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+                          <a class="dropdown-item" href="javascript:void(0);">Share</a> --}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex flex-column align-items-center gap-1 mt-4">
+                          <h2 class="mb-2">{{catCount}}</h2>
+                          <span>Total Orders</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center gap-1 mt-4">
+                          <h2 class="mb-2">₹{{catAmount}}</h2>
+                          <span>Total Amount</span>
+                        </div>
+                        
+                       
+                      </div>
+                      {{#each categorySale}}
+                      <ul class="p-0 m-0">
+                        <li class="d-flex mb-4 pb-1">
+                          <div class="avatar flex-shrink-0 me-3">
+                            <span class="avatar-initial rounded bg-label-primary"
+                              ><i class="fa fa-regular fa-tags"></i></span>
+                          </div>
+                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                            <div class="me-2">
+                              <h6 class="mb-0">{{this._id}}</h6>
+                              {{!-- <small class="text-muted">Mobile, Earbuds, TV</small> --}}
+                            </div>
+                            <div class="user-progress">
+                              <small class="fw-semibold">₹{{this.totalAmount}}</small>
+                            </div>
+                          </div>
+                        </li>
+                        
+                      </ul>
+                      {{/each}}
+                    </div>
+                  </div>
+                </div>
+                <!--/ Order Statistics -->
+
+
+                {{!-- ends --}}
+
+                <div class="col-lg-4 col-md-4 order-1">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                              <img
+                                src="assets/img/icons/unicons/chart-success.png"
+                                alt="chart success"
+                                class="rounded"
+                              />
+                            </div>
+                            <div class="dropdown">
+                              <button
+                                class="btn p-0"
+                                type="button"
+                                id="cardOpt3"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                              </div>
+                            </div>
+                          </div>
+                          <span class="fw-semibold d-block mb-1">Present Month Sale</span>
+                          <h3 class="card-title mb-2">₹ {{monthData.[0].totalAmount}}</h3>
+                          {{!-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> --}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                              <img
+                                src="assets/img/icons/unicons/wallet-info.png"
+                                alt="Credit Card"
+                                class="rounded"
+                              />
+                            </div>
+                            <div class="dropdown">
+                              <button
+                                class="btn p-0"
+                                type="button"
+                                id="cardOpt6"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                              </div>
+                            </div>
+                          </div>
+                          <span>Previous Month Sales</span>
+                          <h3 class="card-title text-nowrap mb-1">₹  {{monthData.[1].totalAmount}}</h3>
+                          {{!-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small> --}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Total Revenue -->
+                 <div class="col-lg-8 mb-4 order-0">
+                  <div class="card">
+                    <div class="d-flex align-items-end row">                   
+
+                      <canvas id="monthChart" width="100" height="50"></canvas>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+                  <div class="card">
+                    <div class="row row-bordered g-0">
+                    
+                     
+                       <canvas id="myChart" width="200" height="150"></canvas>
+                        
+                    </div>
+                  </div>
+                </div>
+                <!--/ Total Revenue -->
+                <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+                  <div class="row">
+                    <h3>Payment Methods</h3>
+                    <div class="col-6 mb-4">
+                      {{#each paymentsData}}
+                      {{#if_eq this._id "paypal-online"}}
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                              <img src="assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
+                            </div>
+                          </div>
+                          <span class="d-block mb-1">{{this._id}}</span>
+                          <h3 class="card-title text-nowrap mb-2">₹{{this.totalAmount}}</h3>
+                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> {{this.count}}</small>
+                        </div>
+                      </div>
+                      {{/if_eq}}
+                      {{/each}}
+                    </div>
+                    <div class="col-6 mb-4">
+                      {{#each paymentsData}}
+                      {{#if_eq this._id "razorpay-online"}}
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                              <img src="assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
+                            </div>
+                           
+                          </div>
+                          <span class="fw-semibold d-block mb-1">{{this._id}}</span>
+                          <h3 class="card-title mb-2">₹{{this.totalAmount}}</h3>
+                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> {{this.count}}</small>
+                        </div>
+                      </div>
+                      {{/if_eq}}
+                      {{/each}}
+                    </div>
+
+                     <div class="col-6 mb-4">
+                      {{#each paymentsData}}
+                      {{#if_eq this._id "COD"}}
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                              <img src="assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
+                            </div>
+                           
+                          </div>
+                          <span class="fw-semibold d-block mb-1">{{this._id}}</span>
+                          <h3 class="card-title mb-2">₹{{this.totalAmount}}</h3>
+                          <small class="text-success fw-semibold"> {{this.count}}</small>
+                        </div>
+                      </div>
+                      {{/if_eq}}
+                      {{/each}}
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+              
+
+                <h2>Sales Reports</h2>
+
+                <table class="table shadow p-3 mb-5 bg-white rounded">
+              <tbody class="text-center">
+              <tr>
+                <form action="/admin/daily-report" method="post">
+              <th scope="row">Daily Report</th>
+              <td>               
+                <input  name="day"  type="date" >                  
+              </td>
+              <td> <button type="submit" class="btn btn-outline-info" data-mdb-ripple-color="dark"><i class="bi bi-eye"></i> View</button> </td>
+             </form>
+            </tr>
+            <tr>
+              <form action="/admin/monthly-report" method="post">
+              <th scope="row">Monthly Report</th>
+              <td><input  type="month" name="month" class="no-border"></td>
+              <td>
+                <button type="submit" class="btn btn-outline-info" data-mdb-ripple-color="dark"><i class="bi bi-eye"></i> View</button>
+                </td> 
+                </form>           
+            </tr>
+            <tr>
+              <form action="/admin/yearly-report" method="post">
+              <th scope="row">Yearly Report</th>
+              <td style="text-align: -webkit-center;">
+               <select name="year" class="form-control" id="dropdownYear"
+	              style="width: 100px;">
+              </select>
+              </td>
+              <td> <button type="submit" class="btn btn-outline-info" data-mdb-ripple-color="dark"><i class="bi bi-eye"></i> View</button> </td>
+             </form>
+            </tr>
+          </tbody>
+        </table>
+
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+                </div>
+                <div>
+                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+
+                  <a
+                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    target="_blank"
+                    class="footer-link me-4"
+                    >Documentation</a
+                  >
+
+                  <a
+                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    target="_blank"
+                    class="footer-link me-4"
+                    >Support</a
+                  >
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+                 
+  </body>
+
+      {{!------------------ YEAR DROPDOWN ----------- --}}
+
+            <script>
+              
+          var i, currentYear, startYear, endYear, newOption, dropdownYear;
+          dropdownYear = document.getElementById("dropdownYear");
+          currentYear = (new Date()).getFullYear();
+          startYear = currentYear - 4;
+          endYear = currentYear + 3;
+         
+          for (i=startYear;i<=endYear;i++) {
+            newOption = document.createElement("option");
+            newOption.value = i;
+            newOption.label = i;
+            newOption.innerHTML=i;
+            if (i == currentYear) {
+              newOption.selected = true;
+            }
+            dropdownYear.appendChild(newOption);
+          }
+            </script>
+
+                {{!-- CHART SCRIPT  --}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+          {{!--------------------------- YEARLY CHART ------------------- --}}
+
+  <script>  
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [{{#each chartData}}'{{_id}}',{{/each}}],
+        datasets: [{
+            label: 'labels',
+            data: [{{#each chartData}}{{totalAmount}},{{/each}}],
+            backgroundColor: [
+                'rgb(126, 129, 254, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1,
+             hoverOffset: 4
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+           plugins: {
+            title: {
+                display: true,
+                text: 'Yearly Sales',
+                 font: {
+                        size: 24
+                    }
+                
+            }
+            
+            
+        }
+    },
+   
+});
+</script>
+
+            {{!--------------------------- MONTHLY CHART ------------------- --}}
+
+<script>
+    
+const cty = document.getElementById('monthChart').getContext('2d');
+const monthChart = new Chart(cty, {
+    type: 'line',
+    data: {
+        labels: [{{#each monthData}}'{{_id}}',{{/each}}],
+        datasets: [{
+            label: 'Total Amount',
+            data: [{{#each monthData}}{{totalAmount}},{{/each}}],
+           fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Monthly Sales',
+                 font: {
+                        size: 24
+                    }
+                
+            }
+            
+            
+        }
+    }
+});
+</script>
+
+
+          {{!--------------------------- CATEGORY CHART ------------------- --}}
+
+<script>
+    
+const ctz = document.getElementById('categoryChart').getContext('2d');
+const categoryChart = new Chart(ctz, {
+    type: 'doughnut',
+    data: {
+        labels: [{{#each categorySale}}'{{_id}}',{{/each}}],
+        datasets: [{
+            label: 'Total Amount',
+            data: [{{#each categorySale}}{{count}},{{/each}}],
+            backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+        }]
+    },
+    options: {
+       
+        plugins: {
+            title: {
+                display: true,
+                text: 'Category Sales',
+                 font: {
+                        size: 24
+                    }
+                
+            }
+            
+            
+        }
+    }
+});
+</script>
+
+<script>
+    
+const cta = document.getElementById('catChart').getContext('2d');
+const catChart = new Chart(cta, {
+    type: 'doughnut',
+    data: {
+        
+        datasets: [{
+            label: 'Total Amount',
+            data: [{{#each categorySale}}{{total}},{{/each}}],
+            backgroundColor: [
+                  'rgb(255,99,71, 1)',
+                  'rgb(255,165,0, 1)',
+                  'rgb(0,250,154, 1)'         
+                 ],
+                hoverOffset: 4
+                }]
+                 },
+                 
+                 options: {
+                   cutout: 90,
+                     responsive: true,
+            
+    }
+ 
+});
+</script>
+
+
+</html>

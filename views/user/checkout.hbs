@@ -1,0 +1,296 @@
+
+
+<div id="preloader">
+            <div id="ctn-preloader" class="ctn-preloader">
+                <div class="animation-preloader">
+                    <div class="spinner"></div>
+                </div>
+                <div class="loader">
+                    <div class="row">
+                        <div class="col-3 loader-section section-left">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-left">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-right">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-right">
+                            <div class="bg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- preloader end -->
+
+
+		<!-- Scroll-top -->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fas fa-angle-up"></i>
+        </button>
+        <!-- Scroll-top-end-->
+
+       
+
+        <!-- main-area -->
+        <main>
+
+            <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg" data-background="/img/bg/long-desk-lightcenter.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2>Checkout Page</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+
+            <!-- checkout-area -->
+            <section class="checkout-area pt-95 pb-95">
+                <div class="container" id="myDiv">
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-7">
+                            <div class="checkout-wrap">
+                                <div class="checkout-top">
+                                    <h5 class="title">Billing details</h5>
+                                    <a href="/cart" class="back"><i class="fas fa-angle-left"></i> -- Back to Cart</a>
+                                </div>
+
+                                {{!-- Accordian Start  --}}
+
+                                 <div class="accordion mb-3" id="accordionExample">
+                                    <div class="card bg-light">
+                                        <div class="card-header" id="headingOne">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left text-dark" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    Add New Address +
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+       
+                                <form  class="checkout-form" id="address-form" >
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label for="fName">FIRST NAME <span>*</span></label>
+                                                <input type="text" id="fName" name="firstName">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label for="lName">LAST NAME <span>*</span></label>
+                                                <input type="text" id="lName" name="lastName">
+                                            </div>
+                                        </div>
+                                        
+                                         {{!-- country  --}}
+
+                                        <div class="col-12">
+                                            <div class="form-grp">
+                                                <label for="address">STREET ADDRESS <span>*</span></label>
+                                                <input type="text" id="address" name="street-address">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label>TOWN / CITY <span>*</span></label>
+                                                <select class="custom-select" name="city">
+                                                    <option value="Aluva">Aluva</option>
+                                                    <option value="Angamaly">Angamaly</option>
+                                                    <option value="Edapally">Edapally</option>
+                                                    <option value="Kochi">Kochi</option>
+                                                    <option value="Thrissur">Thrissur</option>
+                                                    <option value="Palakkad">Palakkad</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label>STATE <span>*</span></label>
+                                                <select class="custom-select" name="state">
+                                                    <option value="Kerala">Kerala</option>
+                                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                                    <option value="Karnataka">Karnataka</option>
+                                                    <option value="AndhraPradesh">AndhraPradesh</option>
+                                                    <option value="Goa">Goa</option>
+                                                    <option value="Delhi">Delhi</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label for="zip">postal ZIP <span>*</span></label>
+                                                <input type="text" id="zip" name="zip">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-grp">
+                                                <label for="phone">Your PHONE <span>*</span></label>
+                                                <input type="text" id="phone" name="phone">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-grp">
+                                                <label for="email">EMAIL ADDRESS <span>*</span></label>
+                                                <input type="email" id="email" name="email">
+                                                <input type="text" name="userId" value="{{user._id}}" hidden>
+                                            </div>
+                                        </div>
+
+                                        <a class="btn btn-success text-white" type="submit" style="border-radius: 10px; background-color: green;" onclick="addAddress()" role="button" >Add ADDRESS</a>                                       
+                                        
+                                    </div>
+                                </form>
+
+                                    </div>
+                                    </div>
+                                </div>
+                                    </div>
+
+                                {{!-- Accordian ends --}}
+                                
+                            <form action="" class="checkout-form-data">
+                                <input type="text" name="userId" value="{{user._id}}" hidden>  
+                                <input class="form-check-input" type="radio" name="address" required value="" hidden/>                            
+                                    {{#each address}} 
+                                <div class="card bg-light mb-3 p-4" style="max-width: 42rem;">
+                                    <div class="card-header text-uppercase font-weight-bold bg-white"> 
+                                        <input type="radio" name="address"  value="{{this._id}}"  id="" required/> {{this.address.firstName}} {{this.address.lastName}}</div>
+                                        <div class="card-body">
+                                            <p class="card-text" >{{this.address.street-address}}, {{this.address.city}}, {{this.address.state}}, {{this.address.zip}}</p>
+                                            <p class="card-text">{{this.address.email}}, {{this.address.phone}}</p>
+                                            
+                                        </div>
+                                    </div>
+                                    {{/each}}                                
+                            </form>
+                         </div>
+                        </div>
+                        <div class="col-lg-5 col-md-8">
+                            <aside class="checkout-sidebar">
+                                <h6 class="title">Cart Totals</h6>
+                                <div class="cart-coupon">                 
+                                        <form action="" id="coupon" class="checkout-form-data">
+                                            <input type="text" name="coupon" id="couponField" placeholder="Enter Coupon Code...">
+                                            <input type="number" id="total" name="total" value="" hidden>
+                                            <button type="submit" onclick="verifyCoupon(event)" id="applyCoupon" class="buttn mt-3">Apply Coupon</button>
+                                            <button type="submit" onclick="RemoveCoupon(event)" id="removeCoupon" class="buttn mt-3" hidden="true">Remove Coupon</button>
+                                        </form>
+                                         <p id="error" class="text-danger"></p>
+                                    </div>
+                                <div class="shop-cart-widget">
+                                   
+                                    <p></p>
+                                   {{#if user.wallet}}
+                                      <form action="" class="checkout-form-data">  
+                                        <h5>USE WALLET</h5>
+                                                <span class="mx-2">Wallet Balance: ₹<span id="walletBalance">{{user.wallet}}</span> </span>
+                                                <div class="" id="wallet1">
+                                                    <input type="radio"  value="1" name="useWallet" onclick="usewallet(event)">
+                                                    <label  for="wallet1" style="width: 40%;">Use</label> 
+                                                </div>
+                                                <div class="mb-3" id="wallet0" hidden>
+                                                    <input type="radio"  value="0" name="useWallet" onclick="removeWallet(event)" checked  >
+                                                    <label  for="wallet0" >Dont Use</label>   
+                                                </div>              
+                                      </form>
+                                   {{/if}}
+                                    <form action="" class="checkout-form-data" id="checkout-form">
+                                        <ul>
+                                            <li class="sub-total"><span>SUBTOTAL: ₹</span>{{total}}</li>
+                                            <li>
+                                                <span>SHIPPING</span>
+                                                <div class="shop-check-wrap">
+                                                <div>                    
+                                                        <label  id="">FREE SHIPPING</label> 
+                                                </div>
+                                            </li>
+                                              <li>
+                                                <span>Wallet Discount</span>
+                                                <div class="shop-check-wrap">
+                                                <div>                    
+                                                        
+                                                        <input type="text" id="wallet-dis" value="0" name="walletDiscount" style="background: transparent; border: none;" readonly>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <span>Discount</span>
+                                                <div >                    
+                                                        <label  id="discount">0</label> 
+                                                </div>
+                                            </li>
+                    
+                                            <li class="cart-total-amount"><span>Payable Amount : ₹</span> <span class="amount" id="payableAmount">{{total}}</span></li>
+                                            <input type="number"  name="payable" class="amount" id="payable"  value="" hidden>
+                                        </ul>
+                                        <div class="payment-method-info">
+                                            <div class="paypal-method-flex" id="cod">
+
+                                                <div class="">
+                                                    <input type="radio" id="customCheck5"  value="COD" name="payment-method"  required>
+                                                    <label   for="customCheck5">Cash on delivery</label>
+                                                    <p>Pay with cash upon delivery.</p>
+                                                </div>
+                                            </div>
+                                            <div class="paypal-method-flex" id="online">
+                                                <div class="">
+                                                    <input type="radio" id="customCheck6" value="razorpay-online" name="payment-method" checked required>
+                                                    <label  for="customCheck6" >Razorpay</label>
+                                                </div>
+                                                <div class="">
+                                                    <input type="radio" id="customCheck11" value="paypal-online" name="payment-method" required>
+                                                    <label  for="customCheck11" >Paypal</label>
+                                                </div>
+                                                <div class="paypal-logo"><img src="/img/images/card.png" alt=""></div>
+                                            </div>
+
+                                             <div class="paypal-method-flex" id="cod">
+
+                                                <div class="" id="wallet-div" hidden>
+                                                    <input type="radio" id="customCheck50"  value="walletPay" name="payment-method"  required>
+                                                    <label   for="customCheck5">Wallet Payment</label>
+                               
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        {{!-- <button class="btn" type="submit" onclick="placeOrder()">Place order</button>
+                                         --}}
+                                         <a type="button" onclick="placeOrder()" class="btn btn-dark mt-2">Place Order</a>
+                                    </form>
+                                </div>
+                            </aside>
+                        </div>
+     
+                    </div>
+                </div>
+            </section>
+            <!-- checkout-area-end -->
+
+        </main>
+        <!-- main-area-end -->
+
+
+ 
+
+       
+
+
+
