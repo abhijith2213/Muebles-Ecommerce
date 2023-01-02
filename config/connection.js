@@ -5,7 +5,7 @@ const state={
 }
 
 module.exports.connect=function(done){
-    const url= 'mongodb+srv://abhijithas2213:abhi123@cluster0.mpsgwoj.mongodb.net/test';
+    const url= process.env.MONGOURL;
     const dbname = 'ecommerce'
 
     mongoClient.connect(url,(err,data)=>{
